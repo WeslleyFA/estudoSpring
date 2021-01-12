@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.PostUpdate;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,6 +19,11 @@ public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @GetMapping()
+    private List<Cliente> listaClientes(){
+        return clienteRepository.findAll();
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
